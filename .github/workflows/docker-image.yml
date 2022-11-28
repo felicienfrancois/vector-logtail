@@ -10,6 +10,10 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build . -t "felicienfrancois/vector-logtail:$GITHUB_REF_NAME"
-    - name: Publish to Docker Hub
-      run: docker login -u "felicienfrancois" -p "$DOCKER_HUB_PASSWORD" && docker push "felicienfrancois/vector-logtail:$GITHUB_REF_NAME"
+      run: docker build -t felicienfrancois/vector-logtail:latest .
+    - name: Login to DockerHub Registry
+      run: echo ${{ secrets.DOCKER_HUB_PASSWORD }} | docker login -u ${{ secrets.DOCKER_HUB_USERNAME }} --password-stdin
+    - name: Tag the Docker image
+      run: docker tag felicienfrancois:latest felicienfrancois:$GITHUB_REF_NAME
+    - name: Push the Docker image to the registry
+      run: docker push felicienfrancois:$GITHUB_REF_NAME
