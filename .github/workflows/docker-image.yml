@@ -12,6 +12,6 @@ jobs:
     - name: Build the Docker image
       run: docker build . -t "felicienfrancois/vector-logtail:$GITHUB_REF_NAME"
     - name: Login to Docker Hub
-      run: docker login -u "$DOCKER_HUB_USERNAME" -p "$DOCKER_HUB_PASSWORD"
+      run: echo "<DOCKER_HUB_PASSWORD>" | docker login -u "felicienfrancois" --password-stdin
     - name: Publish to Docker Hub
       run: docker push "felicienfrancois/vector-logtail:$GITHUB_REF_NAME"
