@@ -10,4 +10,4 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag felicienfrancois/vector-logtail:$(GITHUB_REF_NAME)
+      run: docker build -t "felicienfrancois/vector-logtail:$GITHUB_REF_NAME"
