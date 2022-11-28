@@ -14,6 +14,6 @@ jobs:
     - name: Login to DockerHub Registry
       run: echo ${{ secrets.DOCKER_HUB_PASSWORD }} | docker login -u ${{ secrets.DOCKER_HUB_USERNAME }} --password-stdin
     - name: Tag the Docker image
-      run: docker tag felicienfrancois:latest felicienfrancois:$GITHUB_REF_NAME
+      run: docker tag felicienfrancois/vector-logtail:latest felicienfrancois/vector-logtail:$GITHUB_REF_NAME
     - name: Push the Docker image to the registry
-      run: docker push felicienfrancois:$GITHUB_REF_NAME
+      run: docker push felicienfrancois/vector-logtail:$GITHUB_REF_NAME
