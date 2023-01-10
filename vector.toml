@@ -46,7 +46,7 @@ if .apache2 != {} {
   del(.apache2)
 }
 
-.nginx = parse_regex(.message, r'^\s*(-|(?P<client>\S+))\s+\-\s+(-|(?P<user>\S+))\s+\[(?P<timestamp>.+)\]\s+"(?P<request>(?P<method>\w+)\s+(?P<path>\S+)\s+(?P<protocol>\S+))"\s+(?P<status>\d+)\s+(?P<size>\d+)\s+"(-|(?P<referrer>.+))"\s+"(-|(?P<agent>.+))"(\s+"(-|(?P<host>.+))")?\s*') ??
+.nginx = parse_regex(.message, r'^\s*(-|(?P<client>\S+))\s+\-\s+(-|(?P<user>\S+))\s+\[(?P<timestamp>.+)\]\s+"(?P<request>(?P<method>\w+)\s+(?P<path>\S+)\s+(?P<protocol>\S+))"\s+(?P<status>\d+)\s+(?P<size>\d+)\s+"(-|(?P<referrer>.+))"\s+"(-|(?P<agent>.+))"(\s+"(-|(?P<host>.+))")?\s*$') ??
     parse_regex(.message, r'^\s*(?P<timestamp>.+)\s+\[(?P<severity>\w+)\]\s+(?P<pid>\d+)\#(?P<tid>\d+):\s+\*(?P<cid>\d+)\s+(?P<message>.*)(?:,\s+client:\s+(?P<client>[^,z]+))(?:,\s+server:\s+(?P<server>[^,z]+))(?:,\s+request:\s+"(?P<request>[^"]+)")(?:,\s+subrequest:\s+"(?P<subrequest>[^"]+)")?(?:,\s+upstream:\s+"(?P<upstream>[^"]+)")?(?:,\s+host:\s+"(?P<host>[^"]+)")(?:,\s+referrer:\s+"(?P<referrer>[^"]+)")?\s*') ??
     parse_nginx_log(.message, format: "combined") ??
     parse_nginx_log(.message, format: "error") ??
