@@ -79,13 +79,13 @@ if .nginx != {} {
   }
 
   if is_string(.nginx.status) { .nginx.status = to_int(.nginx.status) ?? .nginx.status }
-  if is_string(.nginx.size) { .nginx.size = to_int(.nginx.size)  ?? -1 }
-  if is_string(.nginx.cid) { .nginx.cid = to_int(.nginx.cid) ?? .nginx.cid }
-  if is_string(.nginx.pid) { .nginx.pid = to_int(.nginx.pid) ?? .nginx.pid }
-  if is_string(.nginx.tid) { .nginx.tid = to_int(.nginx.tid) ?? .nginx.tid }
+  if is_string(.nginx.size) { .nginx.size = to_int(.nginx.size) ?? -1 }
+#  if is_string(.nginx.cid) { .nginx.cid = to_int(.nginx.cid) ?? .nginx.cid }
+#  if is_string(.nginx.pid) { .nginx.pid = to_int(.nginx.pid) ?? .nginx.pid }
+#  if is_string(.nginx.tid) { .nginx.tid = to_int(.nginx.tid) ?? .nginx.tid }
 
-  if is_null(.nginx.subrequest) { del(.nginx.subrequest) }
-  if is_null(.nginx.upstream) { del(.nginx.upstream) }
+#  if is_null(.nginx.subrequest) { del(.nginx.subrequest) }
+#  if is_null(.nginx.upstream) { del(.nginx.upstream) }
   if is_null(.nginx.referrer) { del(.nginx.referrer) }
   if is_null(.nginx.identity) { del(.nginx.identity) }
   if is_null(.nginx.responsetime) { del(.nginx.responsetime) }
