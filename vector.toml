@@ -340,7 +340,7 @@ if .redis != {} {
 
 [sinks.logtail_http_sink_${LOGTAIL_SOURCE_TOKEN}]
 type = "http"
-uri = "https://in.logtail.com/"
+uri = "${LOGTAIL_SERVER_URL}"
 encoding.codec = "json"
 auth.strategy = "bearer"
 auth.token = "${LOGTAIL_SOURCE_TOKEN}"
