@@ -120,6 +120,17 @@ if .mysql != {} {
   del(.mysql)
 }
 
+.json = object!(parse_json(.message) ?? {})
+
+if .json != {} && (exists(.json.level) || exists(.json.http) || exists(.json.timestamp)) {
+  .dt = del(.json.timestamp)
+  .level = del(.json.level)
+  .reqId = del(.json.reqId)
+  .http = del(.json.http)
+  .message = del(.json.message)
+  del(.json)
+}
+
 '''
 
 [sinks.logtail_http_sink_${LOGTAIL_SOURCE_TOKEN}]
