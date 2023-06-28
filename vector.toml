@@ -128,7 +128,8 @@ if .json != {} && (exists(.json.level) || exists(.json.http) || exists(.json.tim
   .reqId = del(.json.reqId)
   .sid = del(.json.sid)
   .http = del(.json.http)
-  .message = del(.json.message ?? .json.msg)
+  if exists(.json.msg) { .message = .json.msg }
+  if exists(.json.message) { .message = .json.message }
   del(.json)
 }
 
