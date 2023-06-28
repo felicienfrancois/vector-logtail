@@ -123,6 +123,7 @@ if .mysql != {} {
 .json = object!(parse_json(.message) ?? {})
 
 if .json != {} && (exists(.json.level) || exists(.json.http) || exists(.json.timestamp) || exists(.json.msg) || exists(.json.message)) {
+  del(.message)
   .dt = del(.json.timestamp)
   .level = del(.json.level)
   .reqId = del(.json.reqId)
